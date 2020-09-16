@@ -1,5 +1,5 @@
 # SoftAdapt
-The main page for SoftAdapt package. This work was developed during my internship at the Air Force Research Lab, and recently approved for public release. Different parts of the code may be released at different times, accompanied by comprehensive examples. Meanwhile, the  algorithm and the test cases can be found in our paper (SoftAdapt: Techniques for Adaptive Loss Weighting of Neural Networks with Multi-Part Loss Functions)[https://arxiv.org/pdf/1912.12355.pdf] 
+The main page for SoftAdapt package. This work was developed during my internship at the Air Force Research Lab, and recently approved for public release. Different parts of the code may be released at different times, accompanied by comprehensive examples. Meanwhile, the  algorithm and the test cases can be found in our paper [SoftAdapt: Techniques for Adaptive Loss Weighting of Neural Networks with Multi-Part Loss Functions](https://arxiv.org/pdf/1912.12355.pdf). 
 
 
 ### Installing SoftAdapt
@@ -13,21 +13,16 @@ pip install -e .
 
 ### Part 1: SoftAdapt
 
-Place the the <code>.py</code> files in the same folder as the code, the just import the name of the file (without .py) in the code.   
-
-
-
-
-    
-""" 
-SOFTADAPT in various forms
+Place the the <code>.py</code> files in the same folder as the code, the j    
+ 
+#### SoftAdapt in various forms
 
 
 Modified version of softmax with a little spice from beta
 
 Beta is a hyperparameter that will either sharpen or dampen the peaks 
 
-Default Beta is 0.1
+Default `Beta` is `0.1`
 
 Variations : 
     
@@ -80,7 +75,7 @@ Usage :
 
 
 
-############ FINITE DIFFERENCE #################
+####  Finite Difference Approximation
 
 """
 loss Usage:
