@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: Soft-Adapt-package
+Version: 0.0.1
+Summary: SoftAdapt package 
+Home-page: GitHub Link to the package here
+Author: A. Ali Heydari
+Author-email: aheydari@ucmerced.edu
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
