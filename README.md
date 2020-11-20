@@ -21,4 +21,6 @@ After installing the package, you can use any of the three variants during the t
 
 ### Examples
 
+Examples and more documentation coming very soon!!
+
 
