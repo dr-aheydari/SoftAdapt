@@ -23,4 +23,8 @@ After installing the package, you can use any of the three variants during the t
 
 Examples and more documentation coming very soon!!
 
+### Test Cases
 
+
+#### Posterior Collapse
+Code and math coming soon
