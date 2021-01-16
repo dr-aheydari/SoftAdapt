@@ -20,6 +20,7 @@ setup(
       install_requires=[
                         'tqdm',
                         'numpy',
+                        'easydict'
                         ],
       classifiers=[
                    "Development Status :: 4 - Beta",
