@@ -26,7 +26,7 @@ class SoftAdapt():
 #         self.n = slopes
 #         self.loss_tensor = loss_tensor
         self.backend = backend
-        self.Welcome_BEARD()
+#         self.Welcome_BEARD()
 
 
 ### Soft Adapt ###
@@ -189,21 +189,21 @@ class SoftAdapt():
         return alpha 
     
 
-    def Welcome_BEARD():
+#     def Welcome_BEARD(self):
       
-          print("\__________     __________/")
-          print(" |         |-^-|         |")
-          print(" |         |   |         |")
-          print("  `._____.´     `._____.´")
-          print("  \                     /")
-          print("   \\\                 // ")
-          print("    \\\    ////\\\\\\\   //")
-          print("     \\\\\           /// ")
-          print("       \\\\\\\\\\\\|////// ")
-          print("         \\\\\\\\|//// ")
+#           print("\__________     __________/")
+#           print(" |         |-^-|         |")
+#           print(" |         |   |         |")
+#           print("  `._____.´     `._____.´")
+#           print("  \                     /")
+#           print("   \\\                 // ")
+#           print("    \\\    ////\\\\\\\   //")
+#           print("     \\\\\           /// ")
+#           print("       \\\\\\\\\\\\|////// ")
+#           print("         \\\\\\\\|//// ")
     
-          print(" ")
-          print(f"SoftAdapt {version} for {self.backend} imported succsessfuly")
+#           print(" ")
+#           print(f"SoftAdapt {version} for {self.backend} imported succsessfuly")
     
 
     

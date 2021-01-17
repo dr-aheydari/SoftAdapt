@@ -6,7 +6,7 @@ def make_args(*args, alphas=2, kappa=1.5, fd_order=5, num_epochs=100):
     
     args = {
         
-        "alphas": np.zeros(alphas),
+        "alphas": np.array((0.5,0.5)),
         "loss1" : np.zeros(5),
         "loss2" : np.zeros(5),
         "global_count" : 0,
@@ -30,13 +30,14 @@ def make_args(*args, alphas=2, kappa=1.5, fd_order=5, num_epochs=100):
 
 def Adapt(recent_loss_tensor, which_SA="loss-weighted", beta=0.5, args = make_args()):
     
+    SA = SoftAdapt(backend = "PyTorch");
     # print all the parameters once at the very begining
     if args["global_count"] == 0 : 
         print("The Parameters of SoftAdapt : ");
         print(f"    -> Soft Adapt Variation: {which_SA}"); 
         print(f"    -> softmax Beta: {beta}");
         args["global_count"] += 1 ;
-
+        #create a SoftAdapt object
     
     if len(recent_loss_tensor) == 2:
         #store the last 5 losses for loss 1
@@ -54,13 +55,15 @@ def Adapt(recent_loss_tensor, which_SA="loss-weighted", beta=0.5, args = make_ar
         print("support for this coming soon");
     
     
+
+    
     if args["global_count"] > 4 :
         
          if len(recent_loss_tensor) == 2 :
             slopes = np.zeros(2);
             slopes[0] = utils.FD(args["loss1"],args);
             slopes[1] = utils.FD(args["loss2"],args);
-            utils.set_hyper(SoftAdapt.alpha_assign(slopes, recent_loss_tensor, beta=beta, string=which_SA),
+            utils.set_hyper(SA.alpha_assign(slopes, recent_loss_tensor, beta=beta, string=which_SA),
                             args,
                             len(recent_loss_tensor)
                             );
@@ -72,7 +75,7 @@ def Adapt(recent_loss_tensor, which_SA="loss-weighted", beta=0.5, args = make_ar
             slopes[1] = utils.FD(args["loss2"],args);
             slopes[2] = utils.FD(args["loss3"],args);
                 
-            utils.set_hyper(SoftAdapt.alpha_assign(slopes, recent_loss_tensor, beta=beta, string=which_SA),
+            utils.set_hyper(SA.alpha_assign(slopes, recent_loss_tensor, beta=beta, string=which_SA),
                             args,
                             len(recent_loss_tensor)
                             );
