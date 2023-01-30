@@ -138,8 +138,6 @@ Here are the only changes that need to be added to the above code to utilize Sof
 loss_component_1 = MyCriterion1()
 loss_component_2 = MyCriterion2()
 loss_component_3 = MyCriterion3()
-loss_component_4 = MyCriterion4()
-loss_component_5 = MyCriterion5()
 
 # Change 1: Create a SoftAdapt object (with your desired variant)
 softadapt_object = LossWeightedSoftAdapt(beta=0.1)
@@ -167,8 +165,12 @@ for current_epoch in range(training_epochs):
       
       # Change 4: Make sure `epochs_to_make_change` have passed before calling SoftAdapt.
       if current_epoch % epochs_to_make_updates == 0 and current_epoch != 0:
-          adapt_weights = softadapt_object.get_component_weights(torch.tensor(values_of_component_1), torch.tensor(values_of_component_2), 
-                                                            torch.tensor(values_of_component_3)
+          adapt_weights = softadapt_object.get_component_weights(torch.tensor(values_of_component_1), 
+                                                                 torch.tensor(values_of_component_2), 
+                                                                 torch.tensor(values_of_component_3),
+                                                                 verbose=False,
+                                                                 )
+                                                            
       
           # Resetting the lists to start fresh (this part is optional)
           values_of_component_1 = []
