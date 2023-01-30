@@ -49,7 +49,7 @@ loss_component_3 = torch.tensor([1500, 1000, 500, 100, 1])
 clearly, the first loss component is not being as optimized as the other two loss components (since it is increasing), while the rates of change for component 2 and 3 are negative (with component 3 being 10 times faster than component 2). Now let us see the different variants of SoftAdapt in action for this problem.
 
 ```python
-from softAdapt import SoftAdapt, NormalizedSoftAdapt, LossWeightedSoftAdapt
+from softadapt import SoftAdapt, NormalizedSoftAdapt, LossWeightedSoftAdapt
 import torch
 # We redefine the loss components above for the sake of completeness.
 loss_component_1 = torch.tensor([1, 2, 3, 4, 5])
