@@ -13,7 +13,7 @@ $ pip install git+https://github.com/dr-aheydari/SoftAdapt.git
 ```
 or can be first cloned and then installed as the following:
 ```
-$ git clone git+https://github.com/dr-aheydari/SoftAdapt.gitt
+$ git clone git+https://github.com/dr-aheydari/SoftAdapt.git
 $ pip install ./SoftAdapt
 ```
 
@@ -22,10 +22,6 @@ Once the files are available, make sure to be in the same directory as `setup.py
 
 ````bash
 pip install -e .
-````
-In the case that you want to install the requirements explicitly, you can do so by:
-````bash
-pip install -r requirements.txt
 ````
 
 ## General Usage and Examples
@@ -38,7 +34,7 @@ SoftAdapt is designed for multi-tasking neural networks, where the loss componen
 ```python
 criterion = loss_component_1 + loss_component_2 + loss_component_3
 ```
-Traditionally, these loss components are weighted the same (i.e. all having coefficients of 1); however, as shown by many works, weighting the different components based on the optimization performance can significantly improve the overall optimization and model training. SoftAdapt aims to calculate the most optimal set of (convex) weights based on live statistics.
+Traditionally, these loss components are weighted the same (i.e. all having coefficients of 1); however, as shown by many studies, using different balancing coefficients for each component based on the optimization performance can significantly improve model training. SoftAdapt aims to calculate the most optimal set of (convex) weights based on live statistics.
 
 Considering the example above, let us assume that the first 5 epochs have resulted in the following loss values:
 ```python
@@ -46,7 +42,7 @@ loss_component_1 = torch.tensor([1, 2, 3, 4, 5])
 loss_component_2 = torch.tensor([150, 100, 50, 10, 0.1])
 loss_component_3 = torch.tensor([1500, 1000, 500, 100, 1])
 ```
-clearly, the first loss component is not being as optimized as the other two loss components (since it is increasing), while the rates of change for component 2 and 3 are negative (with component 3 being 10 times faster than component 2). Now let us see the different variants of SoftAdapt in action for this problem.
+Clearly, the first loss component is not being optimized as well as the other two parts, since it is increasing while the rates of change for component 2 and 3 being negative (with component 3 decreasing 10x faster than component 2). Now let us see the different variants of SoftAdapt in action for this problem.
 
 ```python
 from softadapt import SoftAdapt, NormalizedSoftAdapt, LossWeightedSoftAdapt
