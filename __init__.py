@@ -1,2 +1,2 @@
-# __init__.py
-from .SoftAdapt import *
+"""First level import of the package."""
+from .softadapt import *

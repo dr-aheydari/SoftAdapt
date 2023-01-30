@@ -1,3 +1,5 @@
+"""Setup file for softadapt package installation."""
+
 from setuptools import setup, find_packages
 
 with open("README.md", mode="r", encoding="utf-8") as readme_file:
@@ -6,11 +8,12 @@ with open("README.md", mode="r", encoding="utf-8") as readme_file:
 
 
 setup(
-      name="SoftAdapt",
-      version="0.0.2",
+      name="softadapt",
+      version="0.0.5",
       author="A. Ali Heydari",
       author_email="aliheydari@ucdavis.edu",
-      description="SoftAdapt: Techniques for Adaptive Loss Weighting of Neural Networks with Multi-Part Loss Functions",
+      description=("SoftAdapt: Techniques for Adaptive Loss Weighting of Neural"
+                   " Networks with Multi-Part Loss Functions"),
       long_description=readme,
       long_description_content_type="text/markdown",
       license="MIT",
@@ -18,16 +21,18 @@ setup(
       download_url="https://github.com/dr-aheydari/SoftAdapt",
       packages=find_packages(),
       install_requires=[
-                        'tqdm',
-                        'numpy',
-                        'easydict'
+                        "findiff",
+                        "tqdm>=4.47.0",
+                        "torch>=1.13.1",
                         ],
       classifiers=[
                    "Development Status :: 4 - Beta",
                    "Intended Audience :: Science/Research",
                    "License :: OSI Approved :: MIT Software License",
-                   "Programming Language :: Python :: 3.6",
+                   "Programming Language :: Python :: 3.10",
                    "Topic :: Scientific/Engineering :: Artificial Intelligence"
                    ],
-      keywords="Adaptive-Weighting Multi-Task-Nerual-Networks Optimization Gradient-Descent-Weighting"
+      keywords=("Physics-Informed Neural Networks", "Balancing PINNs Loss",
+                "Adaptive-Weighting, Multi-Task-Nerual-Networks Optimization",
+                "Gradient-Descent-Weighting, Machine Learning")
       )
