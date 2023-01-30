@@ -58,7 +58,7 @@ class SoftAdapt(SoftAdaptBase):
                   " component, which will result in trivial weighting.")
 
         rates_of_change = []
-        print(loss_component_values)
+
         for loss_points in loss_component_values:
             # Compute the rates of change for each one of the loss components.
             rates_of_change.append(

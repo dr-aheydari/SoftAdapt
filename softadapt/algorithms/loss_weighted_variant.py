@@ -58,7 +58,7 @@ class LossWeightedSoftAdapt(SoftAdaptBase):
 
         rates_of_change = []
         average_loss_values = []
-        print(loss_component_values)
+
         for loss_points in loss_component_values:
             # Compute the rates of change for each one of the loss components.
             rates_of_change.append(
