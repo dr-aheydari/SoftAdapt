@@ -15,7 +15,7 @@ $ pip install git+https://github.com/dr-aheydari/SoftAdapt.git
 ```
 or can be first cloned and then installed as the following:
 ```
-$ git clone git+https://github.com/dr-aheydari/SoftAdapt.git
+$ git clone https://github.com/dr-aheydari/SoftAdapt.git
 $ pip install ./SoftAdapt
 ```
 
