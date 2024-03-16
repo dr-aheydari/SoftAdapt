@@ -22,7 +22,7 @@ class LossWeightedSoftAdapt(SoftAdaptBase):
           volume approximation of each loss component's slope.
     """
 
-    def __init__(self, beta: int = 0.1, accuracy_order: int = None):
+    def __init__(self, beta: float = 0.1, accuracy_order: int = None):
         """SoftAdapt class initializer."""
         super().__init__()
         self.beta = beta
