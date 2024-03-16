@@ -183,6 +183,60 @@ for current_epoch in range(training_epochs):
 
 ```
 
+With this previous usage example, the weights are updated for every batch of an epoch when `current_epoch % epochs_to_make_updates == 0` condition is met. Similar to mini-batch gradient descent, the idea is that updating the adaptive weights per batch allows to learn from smaller chunks of data and potentially converge faster (at the cost of possibly introducing a bit of noise). In most applications, this approach provides the best convergence.
+
+One could also update the weights once before the optimization loop over mini batches, like in this example where weights are updated only once every 5 epochs:
+
+```python
+loss_component_1 = MyCriterion1()
+loss_component_2 = MyCriterion2()
+loss_component_3 = MyCriterion3()
+
+# Change 1: Create a SoftAdapt object (with your desired variant)
+softadapt_object = LossWeightedSoftAdapt(beta=0.1)
+
+# Change 2: Define how often SoftAdapt calculate weights for the loss components
+epochs_to_make_updates = 5
+
+# Change 3: Initialize lists to keep track of loss values over the epochs we defined above
+values_of_component_1 = []
+values_of_component_2 = []
+values_of_component_3 = []
+# Initializing adaptive weights to all ones.
+adapt_weights = torch.tensor([1,1,1])
+
+# Main training loop:
+for current_epoch in range(training_epochs):
+    # Change 4: Make sure `epochs_to_make_change` have passed before calling SoftAdapt.
+    if current_epoch % epochs_to_make_updates == 0 and current_epoch != 0:
+        adapt_weights = softadapt_object.get_component_weights(torch.tensor(values_of_component_1), 
+                                                               torch.tensor(values_of_component_2), 
+                                                               torch.tensor(values_of_component_3),
+                                                               verbose=False,
+                                                               )  
+
+        # Resetting the lists to start fresh (this part is optional)
+        values_of_component_1 = []
+        values_of_component_2 = []
+        values_of_component_3 = []
+
+    for batch_idx, data in enumerate(train_data_loader):
+        features, labels = data
+        optimizer.zero_grad()
+        outputs, _, _ = model(features.float())
+        # Keeping track of each loss component
+        values_of_component_1.append(loss_component_1(outputs))
+        values_of_component_2.append(loss_component_2(outputs))
+        values_of_component_3.append(loss_component_3(outputs))
+
+        # Change 5: Update the loss function with the linear combination of all components.
+        loss = adapt_weights[0] * loss_component_1(outputs) + adapt_weights[1]*loss_component_2(outputs) + adapt_weights[2]*loss_component_3(outputs)
+
+        loss.backward()
+        optimizer.step()
+
+```
+
 *Please feel free to open issues for any questions!*
 
 
